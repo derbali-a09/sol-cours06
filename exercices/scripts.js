@@ -52,3 +52,42 @@ function verifierCheckBox(nameAttribute, messageId){
         message.setAttribute('class', 'text-success bg-black')
     }
 }
+
+/*
+NUMERO 3
+*/
+var btnVerifierLogin = document.getElementById("btnVerifierLogin")
+if (btnVerifierLogin != null) {
+    //event click sur le bouton
+    btnVerifierLogin.addEventListener('click', function (event) {
+        //vérifier username
+        let username = document.getElementById("saisieUsername").value
+        let alertUsername= document.getElementById("alertUsername")
+        if(!isNaN(username))  { //c'est numérique 
+            alertUsername.setAttribute('class', "alert alert-warning alert-dismissible fade show")
+        }else {
+            alertUsername.setAttribute('class', "alert alert-warning alert-dismissible fade hide")
+        }
+
+        //vérifier taille password
+        let password = document.getElementById("saisiePassword").value
+        let alertPasswordTaille= document.getElementById("alertPasswordTaille")
+        if(password.length < 6)  { // taille < 6 
+            alertPasswordTaille.setAttribute('class', "alert alert-warning alert-dismissible fade show")
+        }else {
+            alertPasswordTaille.setAttribute('class', "alert alert-warning alert-dismissible fade hide")
+        }
+
+         //vérifier lettre et chiffre dans un password
+         let alertPasswordChiffreEtLettre= document.getElementById("alertPasswordChiffreEtLettre")
+         let regexpLettre = new RegExp('.*[a-zA-Z].*'); 
+         let regexpChiffre = new RegExp('.*[0-9].*'); 
+         if(regexpLettre.test(password) == false || regexpChiffre.test(password)==false){
+            alertPasswordChiffreEtLettre.setAttribute('class', "alert alert-warning alert-dismissible fade show")
+         }else {
+            alertPasswordChiffreEtLettre.setAttribute('class', "alert alert-warning alert-dismissible fade hide")
+         }
+
+         
+    })
+}
