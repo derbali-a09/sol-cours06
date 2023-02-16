@@ -91,3 +91,26 @@ if (btnVerifierLogin != null) {
          
     })
 }
+
+/*
+NUMERO 4
+*/
+var btnPlatSuivant = document.getElementById("btnPlatSuivant")
+var tabPlats = ["Poutine", "Soupe des légumes", "Paté chinois"]
+var tabSrcImages = ["../imgs/poutine.jpg", "../imgs/soupe_legumes.jpg", "../imgs/pate_chinois.jpg"]
+var index = 0
+if (btnPlatSuivant != null) {
+    //event click sur le bouton
+    btnPlatSuivant.addEventListener('click', function (event) {
+        //changer le titre
+        let titre = document.getElementById("titre")   
+        titre.innerHTML = tabPlats[index] 
+        
+        //changer l'image
+        let image = document.getElementById("image")
+        image.setAttribute('src', tabSrcImages[index])
+        
+        //incrémeter l'index d'une façon circulaire
+        index = (index + 1) % tabPlats.length    
+    })
+}
